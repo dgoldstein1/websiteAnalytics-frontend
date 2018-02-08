@@ -1,19 +1,17 @@
 // visitReducer.js
 
-import { UPDATE_VISIBLE_VISITS } from '../actions/visitActions';
+import { UPDATE_VISITS } from '../actions/visitActions';
 
 const initialState = {
-	cachedVisits  : [], // all cached visits
-  visibleVisits : [], // visits the user can currently see
-  visibility    : undefined
+  visits : [] // current visits the user is looking at
 };
 
 const visitReducer = (state = initialState, action) => {
   let defaultState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
   	// update all current visits in store
-    case UPDATE_VISIBLE_VISITS:
-      defaultState.visibleVisits = action.visibleVisits;
+    case UPDATE_VISITS:
+      defaultState.visits = action.visits;
       break;
     default:
     	break;

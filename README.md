@@ -16,6 +16,7 @@ cd websiteAnalytics-frontend
 2. Build and up containers
 
 ```
+npm install
 docker-compose up -d --build
 ```
 
