@@ -1,6 +1,10 @@
 // visits.js
 
+// app Configuration
 import appConfig from '../appConfig';
+
+// library to make calls
+import * as axios from 'axios';
 
 /**
  * API logic and requests with dgoldstein1/websiteAnalytics-backend
@@ -10,10 +14,21 @@ import appConfig from '../appConfig';
 
 /**
  * fetches visits from API. The workhorse of the app.
- * @param {json} filters (i.e. )
+ * @param {json} filters (i.e. {region_code : MA})
+ * @param {json} testing params (callback) used in order to avoid mocking requests
+ * 
+ * @return {Promise} {data : response from api, success : success?, err : err from api}
  **/
-export function fetchVisits(filters = {}, testingParams) {
+export function fetchVisits(filters = {}) {
 	let url = `${appConfig.visitServerEndpoint}/visits${_filtersToUri(filters)}`
+
+	return axios.get(url)
+		.then(res => {
+			return {success : true, data : res.data};
+		})
+		.catch(err => {
+			return {success : false, err : err.response.data};
+		})
 }
 
 /**

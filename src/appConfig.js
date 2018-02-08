@@ -3,5 +3,5 @@
 // stores internal configuration for app
 
 export default {
-	visitServerEndpoint : "localhost:5000"
+	visitServerEndpoint : "http://localhost:5000"
 }
