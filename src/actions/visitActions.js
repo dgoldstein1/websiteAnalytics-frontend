@@ -12,7 +12,7 @@ import { fetchVisits } from '../api/visits';
  **/
 
 export const UPDATE_VISITS = 'UPDATE_VISITS';
-export function updateVisitsAndFilters(visits) {
+export function updateVisits(visits) {
   return {
     type: UPDATE_VISITS,
     visits : visits
@@ -26,6 +26,8 @@ export function updateVisitsAndFilters(visits) {
  **/
 export function fetchAndStoreVisits(filters, callback = () => {}) {
 	fetchVisits(filters).then(res => {
-		console.log(res)
+		if (res.success && res.data !== undefined) {
+			store.dispatch(updateVisits(res.data))
+		}
 	})
 }

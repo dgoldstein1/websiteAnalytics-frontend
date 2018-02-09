@@ -10,4 +10,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-fetchAndStoreVisits({latitide : 'sdf'})
+fetchAndStoreVisits()

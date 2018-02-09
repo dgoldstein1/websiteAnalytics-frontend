@@ -7,16 +7,15 @@ const initialState = {
 };
 
 const visitReducer = (state = initialState, action) => {
-  let defaultState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
   	// update all current visits in store
     case UPDATE_VISITS:
-      defaultState.visits = action.visits;
-      break;
+      return Object.assign({}, state, {
+        visits : action.visits
+      })      
     default:
-    	break;
+    	return state;
   }
-  return defaultState;
 };
 
 export default visitReducer;
