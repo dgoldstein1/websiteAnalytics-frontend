@@ -1,18 +1,29 @@
+// react + redux
 import React, { Component } from 'react';
-import logo from './images/logo.svg';
-import './css/App.css';
+import { store } from './reducers/index';
+
+// containers
+import MainView from './containers/mainView';
+
+// actions
+import { fetchAndStoreVisits } from './actions/visitActions';
 
 class App extends Component {
+
+
+  /**
+   * what is done on first load
+   *
+   * - fetches and stores visits with no filters
+   **/
+  componentWillMount() {
+    fetchAndStoreVisits();
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcme to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <MainView store={store}/>
       </div>
     );
   }
