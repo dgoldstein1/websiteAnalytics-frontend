@@ -49,7 +49,7 @@ describe('Misc',() => {
 		})
 
 		it('renders Main Component',() => {
-			expect(wrapper.html().includes(`<div id="MainViewContainer">`)).toBe(true);
+			expect(wrapper.html().includes(`<div id="main-view-controller">`)).toBe(true);
 		})
 	})
 })

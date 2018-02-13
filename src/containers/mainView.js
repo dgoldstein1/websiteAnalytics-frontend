@@ -15,7 +15,7 @@ class MainView extends React.Component {
 
 	render() {
 		return (
-			<div id="MainViewContainer">
+			<div id="main-view-controller">
 				MAIN VIEW
 			</div>
 		);
