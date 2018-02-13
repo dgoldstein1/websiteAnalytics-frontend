@@ -3,6 +3,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+// children components
+import { SearchBar } from '../components/searchBar';
+import { Table } from '../components/table';
+import { MapComponent } from '../components/map';
+
 /**
  * Container for two material ui tabs, one containing map
  * the other containing the list view, and the search bar
@@ -16,7 +21,7 @@ class MainView extends React.Component {
 	render() {
 		return (
 			<div id="main-view-controller">
-				MAIN VIEW
+				Main View
 			</div>
 		);
 	}
