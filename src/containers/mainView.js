@@ -41,7 +41,7 @@ class MainView extends React.Component {
       // update view in appState
       this.props.dispatch(updateView(tabSelected));
     } else { // tab is undefined
-      console.error("undefined tab selected", arguments);
+      throw("Could not find tab with index " + tabIndex)
     }
   }
 
@@ -49,7 +49,7 @@ class MainView extends React.Component {
 		return (
 			<div id="main-view-controller">
         {/* Bar containing tabs */}
-				<AppBar position="static" color="default">
+				<AppBar position="static" color="default" id="app-bar">
           <Tabs
             value={this.props.appState.availableViews.indexOf(this.props.appState.view)}
             onChange={this._handleTabChange}
@@ -57,7 +57,7 @@ class MainView extends React.Component {
             textColor="primary"
           >
             {this.props.appState.availableViews.map((view, key) => 
-              <Tab label={view} key={key}/>
+              <Tab label={view} key={key} id={view}/>
             )}
           </Tabs>
         </AppBar>
