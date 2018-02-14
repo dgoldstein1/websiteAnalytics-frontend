@@ -17,6 +17,9 @@ import SearchBar from '../components/searchBar';
 import Table from '../components/table';
 import MapComponent from '../components/map';
 
+// css
+import '../css/MainView.css'
+
 // actions
 import { updateView } from '../actions/appStateActions';
 
