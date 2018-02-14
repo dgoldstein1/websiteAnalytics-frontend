@@ -25,7 +25,7 @@ import SearchBar from './searchBar';
 configure({ adapter: new Adapter() });
 
 describe('components',() => {
-  describe('mainView',() => {
+  describe('search bar',() => {
 
     // configure mock store
     const middlewares = [thunk];
@@ -37,17 +37,28 @@ describe('components',() => {
       store = mockStore(defaultState);
       wrapper = mount(
         <Provider store={store}>
-          <SearchBar query={''}/>
+          <SearchBar query={''} disabled={false}/>
         </Provider>
       );
     })
     describe('rendering', () => {
-      it('Main Component',() => {
+      it('input bar',() => {
         expect(wrapper.html().includes('search-bar-input')).toBe(true);
       });
-      it('app bar',() => {
+      it('search button',() => {
         expect(wrapper.html().includes('search-bar-button')).toBe(true);
       });
+    })
+    describe('logic',() => {
+      it('when disabled, components are disabled',() => {
+        wrapper = mount(
+          <Provider store={store}>
+            <SearchBar query={''} disabled={true}/>
+          </Provider>
+        );
+        expect(wrapper.html().includes(`type="button" disabled=""`)).toBe(true);
+        expect(wrapper.html().includes(`isabled="" id="search-bar-input"`)).toBe(true);
+      })
     })
   })
 })

@@ -50,19 +50,21 @@ class SearchBar extends React.Component {
           margin="normal"
           onChange={this._handleInputChange}
           onKeyPress={(ev) => {
-            if (ev.key === 'Enter') {
+            if (ev.key === 'Enter' && !this.props.disabled) {
               searchOnKeyword()
               ev.preventDefault();
             }
           }}
           placeholder="Search 'Israel', '02067', 'MN', 'Boston'"
           style={{width : 600, padding : 15}}
+          disabled={this.props.disabled}
         />
         <Button
           id={'search-bar-button'}
           variant="raised"
           color="primary"
           onClick={searchOnKeyword}
+          disabled={this.props.disabled}
         >
           Search
         </Button>
@@ -72,7 +74,8 @@ class SearchBar extends React.Component {
 }
 
 SearchBar.propTypes = {
-  query : PropTypes.string.isRequired
+  query : PropTypes.string.isRequired,
+  disabled : PropTypes.bool.isRequired
 }
 
 export default SearchBar;

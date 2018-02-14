@@ -73,6 +73,7 @@ class MainView extends React.Component {
 			<div id="main-view-controller">
         <SearchBar
           query={this.props.search.query}
+          disabled={this.props.appState.loading}
         />
         {/* Bar containing tabs */}
 				<AppBar position="static" color="default" id="app-bar">
@@ -84,7 +85,13 @@ class MainView extends React.Component {
             centered
           >
             {this.props.appState.availableViews.map((view, key) => 
-              <Tab label={view} key={key} id={view} icon={this._getIconHelper(view)}/>
+              <Tab
+                label={view}
+                key={key}
+                id={view}
+                icon={this._getIconHelper(view)}
+                disabled={this.props.appState.loading}
+              />
             )}
           </Tabs>
         </AppBar>
