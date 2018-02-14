@@ -8,6 +8,10 @@ import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography'
 
+// icons
+import LocationOnIcon from 'material-ui-icons/LocationOn';
+import FormatListBulleted from 'material-ui-icons/FormatListBulleted';
+
 // children components
 import SearchBar from '../components/searchBar';
 import Table from '../components/table';
@@ -28,11 +32,14 @@ class MainView extends React.Component {
   constructor(props) {
     super(props);
     // bind methods
+    this._getIconHelper = this._getIconHelper.bind(this);
     this._handleTabChange = this._handleTabChange.bind(this);
   }
 
   /**
    * handler for when the user clicks on a tab
+   * @param {html} event.target
+   * @param {int} tabIndex
    **/
   _handleTabChange(event, tabIndex) {
     // get name of tab clicked
@@ -44,6 +51,17 @@ class MainView extends React.Component {
     } else { // tab is undefined
       throw("Could not find tab with index " + tabIndex)
     }
+  }
+
+  /**
+   * helper for getting the name of an icon
+   * @param {string} view
+   * @return {html} icon from material ui
+   **/
+  _getIconHelper(tab) {
+    if (tab === 'visits') return <FormatListBulleted/>
+    if (tab === 'map') return <LocationOnIcon/>
+    return undefined;
   }
 
 	render() {
@@ -62,7 +80,7 @@ class MainView extends React.Component {
             centered
           >
             {this.props.appState.availableViews.map((view, key) => 
-              <Tab label={view} key={key} id={view}/>
+              <Tab label={view} key={key} id={view} icon={this._getIconHelper(view)}/>
             )}
           </Tabs>
         </AppBar>
