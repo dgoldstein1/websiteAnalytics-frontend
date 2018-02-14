@@ -9,7 +9,10 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 
 // actions
-import { updateQuery } from '../actions/searchActions';
+import { 
+  updateQuery,
+  searchOnKeyword
+ } from '../actions/searchActions';
 
 // store
 import { store } from '../reducers/index';
@@ -26,14 +29,14 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props)
     // bind internal methods
-    this._handleSearch = this._handleSearch.bind(this);
+    this._handleInputChange = this._handleInputChange.bind(this);
   }
 
   /**
    * updates store with new keywords from search bar
    * @param {event}
    **/
-  _handleSearch(event) {
+  _handleInputChange(event) {
     if (event.target && event.target.value !== undefined)
     store.dispatch(updateQuery(event.target.value))
   }
@@ -44,11 +47,15 @@ class SearchBar extends React.Component {
 				<TextField
           type="search"
           margin="normal"
-          onChange={this._handleSearch}
-          placeholder="Search.. (i.e. 'Israel', '02067', 'MN', 'Boston'"
+          onChange={this._handleInputChange}
+          placeholder="Search 'Israel', '02067', 'MN', 'Boston'"
           style={{width : 600, padding : 15}}
         />
-        <Button variant="raised" color="primary">
+        <Button 
+          variant="raised"
+          color="primary"
+          onClick={searchOnKeyword}
+        >
           Search
         </Button>
 			</div>
