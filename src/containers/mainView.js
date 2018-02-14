@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 // material ui
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
+import Typography from 'material-ui/Typography'
 
 // children components
 import SearchBar from '../components/searchBar';
@@ -48,6 +49,9 @@ class MainView extends React.Component {
 	render() {
 		return (
 			<div id="main-view-controller">
+        <SearchBar
+          query={this.props.search.query}
+        />
         {/* Bar containing tabs */}
 				<AppBar position="static" color="default" id="app-bar">
           <Tabs
@@ -55,6 +59,7 @@ class MainView extends React.Component {
             onChange={this._handleTabChange}
             indicatorColor="primary"
             textColor="primary"
+            centered
           >
             {this.props.appState.availableViews.map((view, key) => 
               <Tab label={view} key={key} id={view}/>
@@ -63,15 +68,19 @@ class MainView extends React.Component {
         </AppBar>
         {/* display table on visits view */}
         {this.props.appState.view === 'visits' &&
-          <Table
-            visits={this.props.visits.visits}
-          />
+          <Typography component="div" style={{padding : 24}}>
+            <Table
+              visits={this.props.visits.visits}
+            />
+          </Typography>
         }
         {/* display map on map view */}
         {this.props.appState.view === 'map' &&
-          <MapComponent
-            visits={this.props.visits.visits}
-          />
+          <Typography component="div" style={{padding : 24}}>
+            <MapComponent
+              visits={this.props.visits.visits}
+            />
+          </Typography>
         }
 			</div>
 		);
