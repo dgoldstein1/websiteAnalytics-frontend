@@ -7,12 +7,12 @@ import logger from 'redux-logger';
 // reducers in this directory
 import appState from'./appStateReducer';
 import search from './searchReducer';
-import visit from './visitReducer';
+import visits from './visitReducer';
 
 const Reducer = combineReducers({
 	appState,
 	search,
-  visit
+  visits
 });
 
 const store = createStore(Reducer, applyMiddleware(logger));

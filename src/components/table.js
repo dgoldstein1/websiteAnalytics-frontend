@@ -1,7 +1,7 @@
 // table.js
 
 import React from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 /**
  * displays material UI table of data in store.visits
@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
  * Created by David Goldstein on 2/9/18
  **/
 
- class Table extends React.Component {
+class Table extends React.Component {
 
 	render() {
 		return (
@@ -20,6 +20,8 @@ import { connect } from 'react-redux';
 	}
 }
 
-// connect to store
-let mapStateToProps = state => state;
-export default connect(mapStateToProps)(Table);
+Table.propTypes = {
+  visits : PropTypes.array.isRequired
+}
+
+export default Table;

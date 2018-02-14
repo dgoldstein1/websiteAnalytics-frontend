@@ -1,7 +1,7 @@
 // map.js
 
 import React from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 /**
  * displays leaflet map of data in store.visits
@@ -21,6 +21,8 @@ class MapComponent extends React.Component {
 	}
 }
 
-// connect to store
-let mapStateToProps = state => state;
-export default connect(mapStateToProps)(MapComponent);
+MapComponent.propTypes = {
+  visits : PropTypes.array.isRequired
+}
+
+export default MapComponent;

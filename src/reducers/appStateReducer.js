@@ -3,7 +3,8 @@
 import { UPDATE_VIEW } from '../actions/appStateActions';
 
 const initialState = {
-  view : "list" // the tab the user is currently viewing i.e. 'list' or 'home'
+  view : "visits", // the current view
+  availableViews : ["visits", "map"] // list of views available 
 };
 
 const visitReducer = (state = initialState, action) => {

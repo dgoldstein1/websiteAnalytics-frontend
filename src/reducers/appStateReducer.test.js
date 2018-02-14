@@ -8,7 +8,8 @@ describe('reducers',() => {
 	describe('appStateReducer',() => {
 
 		const initialState = {
-			view : "list"
+			view : "visits", // the current view
+			availableViews : ["visits", "map"] // list of views available 
 		}
 
 		it('initializes with correct state',() => {
@@ -21,7 +22,7 @@ describe('reducers',() => {
 					type : UPDATE_VIEW,
 					view : "map"
 				}
-				expect(appStateReducer(undefined, action)).toEqual({ view : "map"})
+				expect(appStateReducer(undefined, action)).toEqual({ view : "map", availableViews : ["visits", "map"]})
 			})
 		})
 	})

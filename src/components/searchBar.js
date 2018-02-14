@@ -1,7 +1,7 @@
 // searchBar.js
 
 import React from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 /**
  * Displays interactive search bar for user to make requests to visits
@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
  * Created by David Goldstein on 2/8/18
  **/
 
- class SearchBar extends React.Component {
+class SearchBar extends React.Component {
 
 	render() {
 		return (
@@ -20,6 +20,8 @@ import { connect } from 'react-redux';
 	}
 }
 
-// connect to store
-let mapStateToProps = state => state;
-export default connect(mapStateToProps)(SearchBar);
+SearchBar.propTypes = {
+  query : PropTypes.string.isRequired
+}
+
+export default SearchBar;
