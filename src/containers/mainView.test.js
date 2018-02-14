@@ -25,7 +25,7 @@ import MainView from './mainView';
 configure({ adapter: new Adapter() });
 
 describe('containers',() => {
-  describe.only('mainView',() => {
+  describe('mainView',() => {
 
     // configure mock store
     const middlewares = [thunk];

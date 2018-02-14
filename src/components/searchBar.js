@@ -36,22 +36,30 @@ class SearchBar extends React.Component {
    * updates store with new keywords from search bar
    * @param {event}
    **/
-  _handleInputChange(event) {
-    if (event.target && event.target.value !== undefined)
-    store.dispatch(updateQuery(event.target.value))
+  _handleInputChange(event, testingConfig = {}) {
+    if (event && event.target && event.target.value !== undefined)
+      store.dispatch(updateQuery(event.target.value))
   }
 
 	render() {
 		return (
 			<div id="search-bar">
 				<TextField
+          id={'search-bar-input'}
           type="search"
           margin="normal"
           onChange={this._handleInputChange}
+          onKeyPress={(ev) => {
+            if (ev.key === 'Enter') {
+              searchOnKeyword()
+              ev.preventDefault();
+            }
+          }}
           placeholder="Search 'Israel', '02067', 'MN', 'Boston'"
           style={{width : 600, padding : 15}}
         />
-        <Button 
+        <Button
+          id={'search-bar-button'}
           variant="raised"
           color="primary"
           onClick={searchOnKeyword}
