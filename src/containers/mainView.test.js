@@ -49,10 +49,10 @@ describe('containers',() => {
         expect(wrapper.html().includes(`id="app-bar"`)).toBe(true);
       });
       it('visits tab',() => {
-        expect(wrapper.html().includes(`id=visits`))
+        expect(wrapper.html().includes(`id="visits"`)).toBe(true);
       })
       it('map tab',() => {
-        expect(wrapper.html().includes(`id=map`))
+        expect(wrapper.html().includes(`id="map"`)).toBe(true);
       })
     })
     describe('logic',() => {
@@ -70,6 +70,22 @@ describe('containers',() => {
             wrapper.dive().instance()._handleTabChange(undefined, "BAD TAB");
           }).toThrowError("Could not find tab with index BAD TAB")
         });
+      });
+      describe('loading states',() => {
+        it('displays loading spinner when state is loading',() => {
+          defaultState.appState.loading = true;
+          store = mockStore(defaultState);
+          wrapper = mount(
+            <Provider store={store}>
+              <MainView />
+            </Provider>
+          );
+          expect(wrapper.html().includes(`id="loading-spinner`)).toBe(true);
+          // does not show data in views
+          expect(wrapper.html().includes(`id="table-component`)).toBe(false);
+          expect(wrapper.html().includes(`id="map-component"`)).toBe(false);
+          defaultState.appState.loading = false;
+        })
       })
     })
   })

@@ -4,11 +4,12 @@
 
 export default {
   "appState": {
-    "view": "visits",
     "availableViews": [
       "visits",
       "map"
-    ]
+    ],
+    "loading": false,
+    "view": "visits"
   },
   "search": {
     "query": ""
@@ -66,7 +67,7 @@ export default {
         "time_zone": "Asia/Jerusalem",
         "zip_code": "",
         "visit_date": "2018-01-25T16:48:44.192Z"
-      },
+      },  
       {
         "ip": "107.77.226.139",
         "city": "Brooklyn",

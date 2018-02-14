@@ -27,7 +27,7 @@ import App from './App';
 configure({ adapter: new Adapter() });
 
 describe('Misc',() => {
-	describe.only('App',() => {
+	describe('App',() => {
 
 		// configure mock store
 		const middlewares = [thunk];

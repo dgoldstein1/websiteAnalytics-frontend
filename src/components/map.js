@@ -14,7 +14,7 @@ class MapComponent extends React.Component {
 
 	render() {
 		return (
-			<div id="main-view-controller">
+			<div id="map-component">
 				Map
 			</div>
 		);

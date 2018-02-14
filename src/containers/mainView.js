@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography'
+import { CircularProgress } from 'material-ui/Progress';
 
 // icons
 import LocationOnIcon from 'material-ui-icons/LocationOn';
@@ -87,8 +88,18 @@ class MainView extends React.Component {
             )}
           </Tabs>
         </AppBar>
+        {/* display only loading icon if currently loading */ }
+        {this.props.appState.loading && 
+          <CircularProgress
+            id={'loading-spinner'}
+            color="primary"
+            style={{padding : 100}}
+            size={200}
+            thickness={1}
+          />
+        }
         {/* display table on visits view */}
-        {this.props.appState.view === 'visits' &&
+        {!this.props.appState.loading && this.props.appState.view === 'visits' &&
           <Typography component="div" style={{padding : 24}}>
             <Table
               visits={this.props.visits.visits}
@@ -96,7 +107,7 @@ class MainView extends React.Component {
           </Typography>
         }
         {/* display map on map view */}
-        {this.props.appState.view === 'map' &&
+        {!this.props.appState.loading && this.props.appState.view === 'map' &&
           <Typography component="div" style={{padding : 24}}>
             <MapComponent
               visits={this.props.visits.visits}

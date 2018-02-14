@@ -13,7 +13,7 @@ class Table extends React.Component {
 
 	render() {
 		return (
-			<div id="main-view-controller">
+			<div id="table-component">
 				Table
 			</div>
 		);
