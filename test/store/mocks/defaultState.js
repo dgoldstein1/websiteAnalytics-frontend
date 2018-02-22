@@ -15,6 +15,7 @@ export default {
     "query": ""
   },
   "visits": {
+    "selectedVisit" : {},
     "visits": [
       {
         "ip": "96.83.122.145",

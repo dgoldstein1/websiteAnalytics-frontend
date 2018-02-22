@@ -20,7 +20,7 @@ import MockAdapter from 'axios-mock-adapter';
 import * as axios from 'axios';
 
 // component to test
-import MainView from './mainView';
+import MainView from './mainView'; 
 
 configure({ adapter: new Adapter() });
 
