@@ -109,7 +109,7 @@ class MainView extends React.Component {
         {!this.props.appState.loading && this.props.appState.view === 'visits' &&
           <Typography component="div" style={{padding : 24}}>
             <Table
-              visits={this.props.visits.visits}
+              visits={this.props.visits}
             />
           </Typography>
         }
