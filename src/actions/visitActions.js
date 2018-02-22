@@ -22,6 +22,14 @@ export function updateVisits(visits) {
   };
 }
 
+export const SET_SELECTED_VISIT = 'SET_SELECTED_VISIT';
+export function setSelectedVisit(visit) {
+  return {
+    type: SET_SELECTED_VISIT,
+    visit : visit
+  };
+}
+
 /**
  * fetches and stores visits to store.visits.visits
  * @param {json} filters (uses store.search.filters) by default
