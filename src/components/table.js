@@ -16,6 +16,13 @@ import Table, {
   TableRow
 } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
+
+// store
+import { store } from '../reducers/index';
+
+// actions
+import { setSelectedVisit } from '../actions/visitActions';
+
 /**
  * displays material UI table of data in store.visits
  *
@@ -44,6 +51,24 @@ export const columns = [
 ];
 
 class VisitTable extends React.Component {
+  constructor(props) {
+    super(props);
+    // bound methods
+    this._handleRowClick = this._handleRowClick.bind(this);
+  }
+
+  /**
+   * handler for when the user clicks a row
+   * @param {json} visit
+   **/
+  _handleRowClick(visit) {
+    if (
+      this.props.visits.selectedVisit === undefined ||
+      this.props.visits.selectedVisit.visit_date !== visit.visit_date
+    )
+      store.dispatch(setSelectedVisit(visit));
+  }
+
   render() {
     return (
       <Paper style={styles.root}>
@@ -58,7 +83,11 @@ class VisitTable extends React.Component {
           <TableBody>
             {this.props.visits.visits.map((visit, vId) => {
               return (
-                <TableRow key={vId}>
+                <TableRow
+                  hover
+                  key={vId}
+                  onClick={() => this._handleRowClick(visit)}
+                >
                   {columns.map((col, colId) => {
                     if (col.key === 'visit_date') {
                       return (
