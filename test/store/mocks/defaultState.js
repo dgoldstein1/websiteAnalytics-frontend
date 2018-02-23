@@ -14,6 +14,10 @@ export default {
   "search": {
     "query": ""
   },
+  "map" : {
+    "position" : [38.87900161743164, -76.98979949951172],
+    "zoom" : 10
+  },
   "visits": {
     "selectedVisit" : {},
     "visits": [

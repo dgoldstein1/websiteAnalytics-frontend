@@ -8,9 +8,11 @@ import logger from 'redux-logger';
 import appState from'./appStateReducer';
 import search from './searchReducer';
 import visits from './visitReducer';
+import map from './mapReducer';
 
 const Reducer = combineReducers({
 	appState,
+  map,
 	search,
   visits
 });

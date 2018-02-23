@@ -25,9 +25,6 @@ const styles = {
   }
 };
 
-const startingPosition = [38.87900161743164, -76.98979949951172];
-const startingZoom = 10;
-
 class MapComponent extends React.Component {
   render() {
     return (
@@ -36,8 +33,8 @@ class MapComponent extends React.Component {
         <div className={'map-component'} id={'map-component'}>
           <Map
             clas={'leaflet-map'}
-            zoom={startingZoom}
-            center={startingPosition}
+            zoom={this.props.map.zoom}
+            center={this.props.map.position}
             style={styles.leafletMap}
           >
             <TileLayer
@@ -63,7 +60,8 @@ class MapComponent extends React.Component {
 }
 
 MapComponent.propTypes = {
-  visits: PropTypes.array.isRequired
+  visits: PropTypes.array.isRequired,
+  map : PropTypes.object.isRequired
 };
 
 export default MapComponent;

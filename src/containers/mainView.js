@@ -118,6 +118,7 @@ class MainView extends React.Component {
           <Typography component="div" style={{padding : 24}}>
             <MapComponent
               visits={this.props.visits.visits}
+              map={this.props.map}
             />
           </Typography>
         }

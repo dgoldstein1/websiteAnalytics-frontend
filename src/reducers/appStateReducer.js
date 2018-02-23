@@ -8,7 +8,7 @@ import {
 const initialState = {
   availableViews : ["visits", "map"], // list of views available 
   loading : false, // the app is / isn't loading
-  view : "map" // the current view
+  view : "visits" // the current view
 };
 
 const visitReducer = (state = initialState, action) => {
