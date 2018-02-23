@@ -7,7 +7,7 @@
 
 // updates which view the app is in
 export const UPDATE_POSITION = 'UPDATE_POSITION';
-export function updatePosition(position) {
+export function setPosition(position) {
   return {
     type: UPDATE_POSITION,
     view : position
@@ -15,7 +15,7 @@ export function updatePosition(position) {
 }
 
 export const UPDATE_ZOOM = 'UPDATE_ZOOM';
-export function setzoom(zoom) {
+export function setZoom(zoom) {
   return {
     type: UPDATE_ZOOM,
     zoom : zoom

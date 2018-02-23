@@ -10,6 +10,12 @@ import { Map, TileLayer, Marker, Popup, CircleMarker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../css/MainView.css';
 
+// actions
+import { setPosition, setZoom } from '../actions/mapActions';
+
+// store
+import { store } from '../reducers/index';
+
 /**
  * displays leaflet map of data in store.visits
  * can't use 'map' because that is tied to nativeCode
@@ -26,12 +32,21 @@ const styles = {
 };
 
 class MapComponent extends React.Component {
+
+  componentDidMount() {
+    const leafletMap = this.leafletMap.leafletElement;
+    leafletMap.on('zoomend', () => {
+        store.dispatch(setZoom(leafletMap.getZoom()));
+    });
+  }
+
   render() {
     return (
       <div>
         <h1> Showing {this.props.visits.length} visits to your website</h1>
         <div className={'map-component'} id={'map-component'}>
           <Map
+            ref={m => { this.leafletMap = m; }}
             clas={'leaflet-map'}
             zoom={this.props.map.zoom}
             center={this.props.map.position}
