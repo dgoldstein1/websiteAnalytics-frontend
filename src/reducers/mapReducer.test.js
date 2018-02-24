@@ -1,5 +1,4 @@
 // mapReducer.test.js
-
 import mapReducer from './mapReducer';
 
 import { 
@@ -12,7 +11,7 @@ describe('reducers',() => {
 
     const initialState = {
       position : [38.87900161743164, -76.98979949951172],
-      zoom : 10
+      zoom : 3
     }
 
     it('initializes with correct state',() => {

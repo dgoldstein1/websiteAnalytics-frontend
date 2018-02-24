@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   position : [38.87900161743164, -76.98979949951172],
-  zoom : 10
+  zoom : 3
 };
 
 const visitReducer = (state = initialState, action) => {
@@ -15,7 +15,7 @@ const visitReducer = (state = initialState, action) => {
     // set when the app is loading
     case UPDATE_POSITION:
       return Object.assign({}, state, {
-        position : action.position 
+        position : action.position
       })
     // update where the user is currently looking
     case UPDATE_ZOOM:

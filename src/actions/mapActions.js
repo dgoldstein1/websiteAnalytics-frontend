@@ -10,7 +10,7 @@ export const UPDATE_POSITION = 'UPDATE_POSITION';
 export function setPosition(position) {
   return {
     type: UPDATE_POSITION,
-    view : position
+    position : position,
   };
 }
 

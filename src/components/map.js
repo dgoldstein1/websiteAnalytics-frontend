@@ -42,9 +42,15 @@ class MapComponent extends React.Component {
     if (this.props.testingMode === true) return;
     // initialize leaflet handlers -> reduce
     const leafletMap = this.leafletMap.leafletElement;
+    // todo: this creates a bug when the markers are open
     // on move
     // leafletMap.on('move',() => {
-    //   store.dispatch(setPosition(leafletMap.getCenter()));
+    //   leafletMap.closePopup();
+    //   let center = [
+    //     leafletMap.getCenter()['lat'],
+    //     leafletMap.getCenter()['lng']
+    //   ]
+    //   store.dispatch(setPosition(center));
     // })
     // on zoom
     leafletMap.on('zoomend', () => {
@@ -53,6 +59,11 @@ class MapComponent extends React.Component {
   }
 
   render() {
+
+    let position = this.props.visits[0] !== undefined
+      ? [this.props.visits[0].latitude, this.props.visits[0].longitude]
+      : this.props.map.position
+
     return (
       <div>
         <h1> Showing {this.props.visits.length} visits to your website from {_.uniqBy(this.props.visits, 'ip').length} distinct IP Addresses</h1>
@@ -61,7 +72,7 @@ class MapComponent extends React.Component {
             ref={m => { this.leafletMap = m; }}
             clas={'leaflet-map'}
             zoom={this.props.map.zoom}
-            center={this.props.map.position}
+            center={position}
             style={styles.leafletMap}
           >
             <TileLayer
