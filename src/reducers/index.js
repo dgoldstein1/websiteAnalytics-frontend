@@ -2,7 +2,7 @@
 
 // redux utils
 import { combineReducers, createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 
 // reducers in this directory
 import appState from'./appStateReducer';
@@ -16,6 +16,11 @@ const Reducer = combineReducers({
 	search,
   visits
 });
+
+const logger = createLogger({
+  collapsed : true,
+  diff : true
+})
 
 const store = createStore(Reducer, applyMiddleware(logger));
 

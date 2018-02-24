@@ -16,6 +16,9 @@ import { setPosition, setZoom } from '../actions/mapActions';
 // store
 import { store } from '../reducers/index';
 
+// utils
+import _ from 'lodash';
+
 /**
  * displays leaflet map of data in store.visits
  * can't use 'map' because that is tied to nativeCode
@@ -34,7 +37,15 @@ const styles = {
 class MapComponent extends React.Component {
 
   componentDidMount() {
+    // testing does not like rendering leaflet
+    if (this.props.testingMode === true) return;
+    // initialize leaflet handlers -> reduce
     const leafletMap = this.leafletMap.leafletElement;
+    // on move
+    leafletMap.on('move',() => {
+      store.dispatch(setPosition(leafletMap.getCenter()));
+    })
+    // on zoom
     leafletMap.on('zoomend', () => {
         store.dispatch(setZoom(leafletMap.getZoom()));
     });
@@ -43,7 +54,7 @@ class MapComponent extends React.Component {
   render() {
     return (
       <div>
-        <h1> Showing {this.props.visits.length} visits to your website</h1>
+        <h1> Showing {this.props.visits.length} visits to your website from {_.uniqBy(this.props.visits, 'ip').length} distinct IP Addresses</h1>
         <div className={'map-component'} id={'map-component'}>
           <Map
             ref={m => { this.leafletMap = m; }}
@@ -58,7 +69,7 @@ class MapComponent extends React.Component {
             />
             {this.props.visits.map((visit, id) => {
               return (
-                <CircleMarker center={[visit.latitude, visit.longitude]} color="red">
+                <CircleMarker center={[visit.latitude, visit.longitude]} color="red" key={id}>
                   <Marker position={[visit.latitude, visit.longitude]}>
                     <Popup>
                       <span>{JSON.stringify(visit, null, 2)}</span>
@@ -76,7 +87,7 @@ class MapComponent extends React.Component {
 
 MapComponent.propTypes = {
   visits: PropTypes.array.isRequired,
-  map : PropTypes.object.isRequired
+  map : PropTypes.object.isRequired,
 };
 
 export default MapComponent;

@@ -25,8 +25,8 @@ import { columns } from './table';
 
 configure({ adapter: new Adapter() });
 
-describe('containers',() => {
-  describe('mainView',() => {
+describe('components',() => {
+  describe('table',() => {
 
     // configure mock store
     const middlewares = [thunk];
