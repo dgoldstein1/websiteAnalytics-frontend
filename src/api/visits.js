@@ -40,11 +40,23 @@ export function fetchVisits(filters = {}) {
  **/
 export function _filtersToUri(filters = {}) {
 	let params = '';
+
+	// if empty filters with only query_type, return empty string
+	let isEmpty = true
+	for (let i in filters) {
+		if (filters[i] && i !== 'query_type')
+			isEmpty = false
+	}
+	if (isEmpty) return params;
+
+	// else add all params to query string
 	for (let param in filters) {
 		params += `&${param}=${filters[param]}`
 	}
 	// if we've added things, we need to put a question mark on the beginning
 	if (params.length > 0)
 		params = '?' + params.substr(1, params.length);
+
+
 	return params;
 }

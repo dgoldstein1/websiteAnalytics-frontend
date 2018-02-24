@@ -15,6 +15,14 @@ describe('api',() => {
 			it('returns an empty string if no filters are passed',() => {
 				expect(visitsFunctions._filtersToUri()).toBe('');
 			});
+			it('returns an empty string if only query_type is passed',() => {
+				let filters = {"query_type" : 'or'};
+				expect(visitsFunctions._filtersToUri(filters)).toBe('')
+			})
+			it('returns an empty string when everything is an empty string except for query_type',() => {
+				let filters = {"ip":"","city":"","country_code":"","country_name":"","region_code":"","time_zone":"","zip_code":"","visit_date":"","query_type":"or"}
+				expect(visitsFunctions._filtersToUri(filters)).toBe('');
+			})
 			it('returns query string parameters when json is passed',() => {
 				expect(visitsFunctions._filtersToUri({country_code : 'US', latitude : 35, query_type : 'nor'})).toBe('?country_code=US&latitude=35&query_type=nor');
 			})

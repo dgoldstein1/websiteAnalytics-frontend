@@ -47,9 +47,9 @@ class MapComponent extends React.Component {
     //   store.dispatch(setPosition(leafletMap.getCenter()));
     // })
     // on zoom
-    // leafletMap.on('zoomend', () => {
-    //     store.dispatch(setZoom(leafletMap.getZoom()));
-    // });
+    leafletMap.on('zoomend', () => {
+      store.dispatch(setZoom(leafletMap.getZoom()));
+    });
   }
 
   render() {
