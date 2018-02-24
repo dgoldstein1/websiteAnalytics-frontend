@@ -1,4 +1,4 @@
-//table.test.js
+// marker.test.js
 
 // react
 import { Provider } from 'react-redux';
@@ -25,7 +25,7 @@ import MapComponent from './map';
 configure({ adapter: new Adapter() });
 
 describe('components',() => {
-  describe('map',() => {
+  describe('marker',() => {
 
     // configure mock store
     const middlewares = [thunk];
@@ -45,15 +45,7 @@ describe('components',() => {
     })
     describe('render', () => {
       it('leaflet map',() => {
-        expect(wrapper.html().includes(`<div class="map-component" id="map-component">`)).toEqual(true);
-      })
-      it('displays number of visits',() => {
-        let numberOfVisits = defaultState.visits.visits.length;
-        expect(wrapper.html().includes(`Showing ${numberOfVisits} visits to your website`)).toEqual(true);
-      })
-      it('displays number of unique IPs',() => {
-        let uniqueIps = _.uniqBy(defaultState.visits.visits, 'ip').length
-        expect(wrapper.html().includes(`from ${uniqueIps} distinct IP Addresses`)).toEqual(true)
+        
       })
     })
   })

@@ -4,7 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // leaflet
-import { Map, TileLayer, Marker, Popup, CircleMarker } from 'react-leaflet';
+import { Map, TileLayer } from 'react-leaflet';
+import Marker from './marker'
 
 // css
 import 'leaflet/dist/leaflet.css';
@@ -42,13 +43,13 @@ class MapComponent extends React.Component {
     // initialize leaflet handlers -> reduce
     const leafletMap = this.leafletMap.leafletElement;
     // on move
-    leafletMap.on('move',() => {
-      store.dispatch(setPosition(leafletMap.getCenter()));
-    })
+    // leafletMap.on('move',() => {
+    //   store.dispatch(setPosition(leafletMap.getCenter()));
+    // })
     // on zoom
-    leafletMap.on('zoomend', () => {
-        store.dispatch(setZoom(leafletMap.getZoom()));
-    });
+    // leafletMap.on('zoomend', () => {
+    //     store.dispatch(setZoom(leafletMap.getZoom()));
+    // });
   }
 
   render() {
@@ -67,15 +68,9 @@ class MapComponent extends React.Component {
               attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {this.props.visits.map((visit, id) => {
+            {this.props.visits.map((visit, key) => {
               return (
-                <CircleMarker center={[visit.latitude, visit.longitude]} color="red" key={id}>
-                  <Marker position={[visit.latitude, visit.longitude]}>
-                    <Popup>
-                      <span>{JSON.stringify(visit, null, 2)}</span>
-                    </Popup>
-                  </Marker>
-                </CircleMarker>
+                <Marker visit={visit} key={key}/>  
               );
             })}
           </Map>
