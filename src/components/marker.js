@@ -13,36 +13,30 @@ import { Marker, Popup, Circle } from 'react-leaflet';
  * Created by David Goldstein on 2.24.18
  **/
 
+/**
+ * generates html to be displayed when user clicks a marker
+ * @return {html} for this visit
+ **/
+export const _generatePopup = function(visit) {
+  return (
+    <div>
+      <h3>
+        <TimeAgo date={visit['visit_date']} live={true} />
+      </h3>
+      <h5>
+        City : {visit['city']}, {visit['region_code']} {visit['zip_code']} {visit['country_code']}
+        <br/>
+        Lat, Lon : {visit['latitude']},{visit['longitude']}
+        <br/>
+        Ip Address : {visit['ip']}
+        <br/>
+        GMT : {visit['visit_date']}
+      </h5>
+    </div>
+  ) 
+}
+
 class MarkerComponent extends React.Component {
-
-  constructor(props) {
-    super(props);
-    // bound methods
-    this._generateMarkerClick = this._generateMarkerClick.bind(this);
-  }
-
-  /**
-   * generates html to be displayed when user clicks a marker
-   * @return {html} for this visit
-   **/
-  _generateMarkerClick() {
-    return (
-      <div>
-        <h3>
-          <TimeAgo date={this.props.visit['visit_date']} live={true} />
-        </h3>
-        <h5>
-          City : {this.props.visit['city']}, {this.props.visit['region_code']} {this.props.visit['zip_code']} {this.props.visit['country_code']}
-          <br/>
-          Lat, Lon : {this.props.visit['latitude']},{this.props.visit['longitude']}
-          <br/>
-          Ip Address : {this.props.visit['ip']}
-          <br/>
-          GMT : {this.props.visit['visit_date']}
-        </h5>
-      </div>
-    ) 
-  }
 
   render() {
     const visit = this.props.visit;
@@ -50,7 +44,7 @@ class MarkerComponent extends React.Component {
       <Circle center={[visit.latitude, visit.longitude]} color="#3f51b5" radius={2000} opacity={.001}>
         <Marker position={[visit.latitude, visit.longitude]} color={"#3f51b5"}>
           <Popup>
-            {this._generateMarkerClick()}
+            {_generatePopup(visit)}
           </Popup>
         </Marker>
       </Circle>

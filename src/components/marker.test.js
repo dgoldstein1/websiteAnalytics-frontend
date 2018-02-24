@@ -11,41 +11,33 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Adapter from 'enzyme-adapter-react-16';
 
+// actions
+import { UPDATE_VIEW } from '../actions/appStateActions';
+
 // mocks
 import defaultState from '../../test/store/mocks/defaultState';
 import MockAdapter from 'axios-mock-adapter';
 import * as axios from 'axios';
 
-// utils
-import _ from 'lodash';
-
 // component to test
-import MapComponent from './map';
+import { _generatePopup } from './marker';
 
-configure({ adapter: new Adapter() });
+const visit = defaultState.visits.visits[0];
 
 describe('components',() => {
   describe('marker',() => {
-
-    // configure mock store
-    const middlewares = [thunk];
-    const mockStore = configureStore(middlewares);
-    let wrapper;
-    let store;
-
-    beforeEach(() => {
-      store = mockStore(defaultState);
-      wrapper = shallow(
-        <MapComponent
-          visits={defaultState.visits.visits}
-          map={defaultState.map}
-          testingMode={true}
-        />
-      )
-    })
     describe('render', () => {
-      it('leaflet map',() => {
-        
+      it('timeAgo',() => {
+        expect(JSON.stringify(_generatePopup(visit)).includes(`"date":"2018-01-25T16:48:53.262Z","live":true,"component":"time","minPeriod":0,"maxPeriod":null}`)).toEqual(true);
+      })
+      it('lat lon', () => {
+        expect(JSON.stringify(_generatePopup(visit)).includes(`"Lat, Lon : ",38.818599700927734,",",-77.0625`)).toEqual(true);
+      })
+      it('ip address',() => {
+        expect(JSON.stringify(_generatePopup(visit)).includes(`"Ip Address : ","96.83.122.145"`)).toEqual(true);
+      })
+      it("visit date",() => {
+        expect(JSON.stringify(_generatePopup(visit)).includes(`"GMT : ","2018-01-25T16:48:53.262Z"`)).toEqual(true);
       })
     })
   })
