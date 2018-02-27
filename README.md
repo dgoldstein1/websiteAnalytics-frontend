@@ -1,6 +1,11 @@
 # websiteAnalytics-frontend
 
-TODO
+This is the front end to a [go-mongo REST server I wrote](https://github.com/dgoldstein1/websiteAnalytics-backend) to track visitors to my personal website. It contains a list view (infinite scroll) and map view mapping out all visits and their frequency by ip address.
+
+![screenshot](screenshots/map-view.png)
+
+To visit the deployed version go to https://determined-tesla-321f59.netlify.com.
+
 
 # Development
 
