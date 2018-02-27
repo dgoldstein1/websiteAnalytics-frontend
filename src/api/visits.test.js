@@ -28,7 +28,7 @@ describe('api',() => {
 			})
 		})
 		describe('fetchVisits',() => {
-			let baseUrl = `${appConfig.visitServerEndpoint}/visits`
+			let baseUrl = `${appConfig.visitServerEndpoint}/`
 			let mock = new MockAdapter(axios);
 			it('no filters',() => {
 				// return empty array on /visits request

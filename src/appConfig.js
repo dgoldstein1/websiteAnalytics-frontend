@@ -4,5 +4,5 @@
 
 export default {
 	// visitServerEndpoint : "http://localhost:5000"
-  visitServerEndpoint : "https://quiet-brushlands-26130.herokuapp.com"
+  visitServerEndpoint : "/api/metrics/"
 }
