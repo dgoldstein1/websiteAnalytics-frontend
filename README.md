@@ -38,6 +38,19 @@ sudo cp -r test/data/* docker/mongodb/data/
 docker-compose up -d
 ```
 
+# Deployment
+
+This app is deployed through netifly. To generate a production build, run
+
+```sh
+# re-create build directory
+npm run build
+# set redirect / cors enviroment for production
+echo "/api/metrics/* https://quiet-brushlands-26130.herokuapp.com/visits 200" >> ./build/_redirects
+```
+
+Then push up to the master branch. There is webhook which will automatically deploy the `./build` directory.
+
 ## Authors
 
 * **David Goldstein** - [DavidCharlesGoldstein.com](http://www.davidcharlesgoldstein.com/) - [Decipher Technology Studios](http://deciphernow.com/)
