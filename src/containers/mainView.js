@@ -10,8 +10,9 @@ import Typography from 'material-ui/Typography'
 import { CircularProgress } from 'material-ui/Progress';
 
 // icons
-import LocationOnIcon from 'material-ui-icons/LocationOn';
-import FormatListBulleted from 'material-ui-icons/FormatListBulleted';
+import List from '@material-ui/icons/List';
+import LocationOn from '@material-ui/icons/LocationOn';
+// import FormatListBulleted from 'material-ui-icons/FormatListBulleted';
 
 // children components
 import SearchBar from '../components/searchBar';
@@ -63,8 +64,8 @@ class MainView extends React.Component {
    * @return {html} icon from material ui
    **/
   _getIconHelper(tab) {
-    if (tab === 'visits') return <FormatListBulleted/>
-    if (tab === 'map') return <LocationOnIcon/>
+    if (tab === 'visits') return <List/>
+    if (tab === 'map') return <LocationOn/>
     return undefined;
   }
 
