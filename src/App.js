@@ -1,5 +1,6 @@
 // react + redux
 import React, { Component } from 'react';
+import { Provider } from 'react-redux'
 import { store } from './reducers/index';
 
 // containers
@@ -23,7 +24,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MainView store={store}/>
+        <Provider store={store}>
+          <MainView/>
+        </Provider>
       </div>
     );
   }
