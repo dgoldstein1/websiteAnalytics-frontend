@@ -38,6 +38,8 @@ sudo cp -r test/data/* docker/mongodb/data/
 docker-compose up -d
 ```
 
+Open up `appConfig.js` and set `visitServerEndpoint` to `"http://localhost:5000/visits"`, then allow CORS in your browser.
+
 # Deployment
 
 This app is deployed through netifly. To generate a production build, run
