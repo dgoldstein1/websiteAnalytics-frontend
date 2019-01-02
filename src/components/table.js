@@ -48,7 +48,8 @@ export const columns = [
   { display: 'City', key: 'city' },
   { display: 'State or Region', key: 'region_code' },
   { display: 'Country', key: 'country_code' },
-  { display: 'Visit Date', key: 'visit_date' }
+  { display: 'Visit Date', key: 'visit_date' },
+  { display : 'Ref', key : 'href'}
 ];
 
 class VisitTable extends React.Component {
