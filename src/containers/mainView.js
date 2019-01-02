@@ -1,3 +1,5 @@
+/* eslint-disable import/first */
+
 // mainView.js
 
 import React from 'react';
@@ -5,9 +7,10 @@ import { connect } from 'react-redux';
 
 // material ui
 import AppBar from '@material-ui/core/AppBar';
-import Tabs, { Tab } from 'material-ui/Tabs';
-import Typography from 'material-ui/Typography'
-import { CircularProgress } from 'material-ui/Progress';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';;
 
 // icons
 import List from '@material-ui/icons/List';

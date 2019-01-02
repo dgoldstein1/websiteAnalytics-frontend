@@ -5,8 +5,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // material ui
-import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 // actions
 import { 
