@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // material ui
-import AppBar from 'material-ui/AppBar';
+import AppBar from '@material-ui/core/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography'
 import { CircularProgress } from 'material-ui/Progress';
