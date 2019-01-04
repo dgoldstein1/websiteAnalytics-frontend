@@ -32,7 +32,7 @@ export const _generatePopup = function(visit) {
         <br/>
         GMT : {visit['visit_date']}
         <br/>
-        Ref : {visit['href'].substr(1)}
+        Ref : {visit['href']}
       </h5>
     </div>
   ) 
