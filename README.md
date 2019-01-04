@@ -55,7 +55,7 @@ Then push up to the master branch. There is webhook which will automatically dep
 
 ## Authors
 
-* **David Goldstein** - [DavidCharlesGoldstein.com](http://www.davidcharlesgoldstein.com/) - [Decipher Technology Studios](http://deciphernow.com/)
+* **David Goldstein** - [DavidCharlesGoldstein.com](http://www.davidcharlesgoldstein.com/?github-website-analytics-frontend) - [Decipher Technology Studios](http://deciphernow.com/)
 
 ## License
 
