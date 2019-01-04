@@ -33,7 +33,8 @@ export function searchOnKeyword() {
     "time_zone" : keyword,
     "zip_code" : keyword,
     "visit_date" : keyword,
-    "query_type" : "or"
+    "href" : keyword,
+    "query_type" : "or",
   };
   return fetchAndStoreVisits(filters);
 }
