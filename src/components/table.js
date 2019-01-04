@@ -91,10 +91,6 @@ class VisitTable extends React.Component {
                   onClick={() => this._handleRowClick(visit)}
                 >
                   {columns.map((col, colId) => {
-                    if (col.key === "href") {
-                      // remove '?' if any
-                      visit.href = visit.href.substr(1)
-                    }
                     if (col.key === 'visit_date') {
                       return (
                         <TableCell key={colId}>
