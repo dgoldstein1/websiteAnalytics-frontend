@@ -46,7 +46,7 @@ This app is deployed through netifly. To generate a production build, run
 
 ```sh
 # re-create build directory
-npm run build
+rm -rf build && npm run build
 # set redirect / cors enviroment for production
 echo "/api/metrics/* https://quiet-brushlands-26130.herokuapp.com/visits 200" >> ./build/_redirects
 ```
