@@ -31,6 +31,8 @@ export const _generatePopup = function(visit) {
         Ip Address : {visit['ip']}
         <br/>
         GMT : {visit['visit_date']}
+        <br/>
+        Ref : {visit['href'].substr(1)}
       </h5>
     </div>
   ) 
