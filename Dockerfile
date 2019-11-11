@@ -10,6 +10,9 @@ ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
 ADD package.json /usr/src/app/package.json
+ADD src /usr/src/app/src
+ADD public /usr/src/app/public
+
 RUN npm install
 RUN npm install react-scripts@1.1.0 -g
 
