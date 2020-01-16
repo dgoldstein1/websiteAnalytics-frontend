@@ -16,7 +16,7 @@ services:
     image : dgoldstein1/websiteanalytics-backend
     environment:
       - LOGGER=true
-      - TEST_MODE=true
+      - TEST_MODE=false
       - DATABASE_URL=mongodb://mongodb:27017
       - PORT=5000
     links:
@@ -24,14 +24,7 @@ services:
     depends_on:
       - mongodb
     ports:
-      - '5000:5000'
+      - 5002:5000
+
   mongodb:
-    image: 'mongo:latest'
-    ports:
-      - '27017:27017'
-    volumes:
-      - ./docker/mongodb/data/db:/data/db
-    environment:
-      - MONGO_DATA_DIR=/data/db
-      - MONGO_LOG_DIR=/dev/null
-    command: 'mongod --smallfiles --logpath=/dev/null'
+    image: 'mongo:4.0.5'
