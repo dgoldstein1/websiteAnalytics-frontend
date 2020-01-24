@@ -19,7 +19,7 @@ import * as axios from "axios";
  * @return {Promise} {data : response from api, success : success?, err : err from api}
  **/
 export function fetchVisits(filters = {}) {
-  let url = `${appConfig.visitServerEndpoint}/${_filtersToUri(filters)}`;
+  let url = `${appConfig.visitServerEndpoint}/visits${_filtersToUri(filters)}`;
   console.log(url);
   return axios
     .get(url)

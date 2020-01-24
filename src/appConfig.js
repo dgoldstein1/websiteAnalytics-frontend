@@ -4,5 +4,5 @@
 
 export default {
 	// visitServerEndpoint : "http://localhost:5000/visits"
-  visitServerEndpoint : "/api/metrics/"
+  visitServerEndpoint : "/api/metrics"
 }
