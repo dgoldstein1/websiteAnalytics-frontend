@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux'
 import { store } from './reducers/index';
-import { Router, Route } from 'react-router';
 
 // containers
 import MainView from './containers/mainView';
@@ -25,15 +24,11 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <Route path="/*">
         <div className="App">
           <Provider store={store}>
             <MainView/>
           </Provider>
         </div>
-       </Route>
-      </Router>
     );
   }
 }
