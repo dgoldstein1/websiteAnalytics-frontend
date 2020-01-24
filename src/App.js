@@ -21,13 +21,14 @@ class App extends Component {
     fetchAndStoreVisits();
   }
 
+
   render() {
     return (
-      <div className="App">
-        <Provider store={store}>
-          <MainView/>
-        </Provider>
-      </div>
+        <div className="App">
+          <Provider store={store}>
+            <MainView/>
+          </Provider>
+        </div>
     );
   }
 }
