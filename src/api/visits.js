@@ -21,7 +21,7 @@ import * as axios from 'axios';
  **/
 export function fetchVisits(filters = {}) {
 	let url = `${appConfig.visitServerEndpoint}/${_filtersToUri(filters)}`
-
+	console.log(url)
 	return axios.get(url)
 		.then(res => {
 			return {success : true, data : res.data};

@@ -12,7 +12,7 @@ FROM dgoldstein1/reverse-proxy:0.1.4
 
 # copy in assets
 RUN mkdir -p /static-files
-COPY LICENSE /static-files/LICENSE
+COPY LICENSE.md /static-files/LICENSE
 COPY VERSION /static-files/VERSION
 COPY --from=build /app/build /static-files/
 
